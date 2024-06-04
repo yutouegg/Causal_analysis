@@ -22,8 +22,8 @@ new Vue({
                 method: 'POST',
                 body: formData
             })
-         .then(response => response.json())
-         .then(data => {
+            .then(response => response.json())
+            .then(data => {
                 this.options = data.columns.map(column => ({ value: column, label: column }));
             });
         },
@@ -41,8 +41,8 @@ new Vue({
                 },
                 body: JSON.stringify(payload)
             })
-         .then(response => response.json())
-         .then(data => {
+            .then(response => response.json())
+            .then(data => {
                 this.result = data.message;
             });
         }
@@ -51,21 +51,21 @@ new Vue({
         <el-container>
             <el-header>
                 <el-row class="top">
-                    <el-col :span="6">
+                    <el-col :span="2">
                         <input type="file" @change="handleFileUpload">
                         <el-button size="small" type="primary" @click="handleUpload">上传</el-button>
                     </el-col>
-                    <el-col :span="6">
+                    <el-col :span="4">
                         <el-select v-model="treatment" placeholder="Treatment">
                             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
                         </el-select>
                     </el-col>
-                    <el-col :span="6">
+                    <el-col :span="4">
                         <el-select v-model="outcome" placeholder="Outcome">
                             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
                         </el-select>
                     </el-col>
-                    <el-col :span="6">
+                    <el-col :span="4">
                         <el-select v-model="common_causes" placeholder="Common Causes" multiple>
                             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
                         </el-select>
@@ -76,13 +76,10 @@ new Vue({
                 </el-row>
             </el-header>
             <el-main>
-                <div style="margin-top: 200px;">
-                    <el-input type="textarea" v-model="result" :autosize="{ minRows: 4, maxRows: 8}"></el-input>
-                </div>
-                <div style="text-align: center; margin-top: -60px;">
-                    <el-button type="primary" @click="analyze">确认</el-button>
+                <div class="content">
+                    <el-input type="textarea" v-model="result" :autosize="{ minRows: 2, maxRows: 4}"></el-input>
                 </div>
             </el-main>
         </el-container>
     `
-});
+    });
