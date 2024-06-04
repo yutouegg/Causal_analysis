@@ -22,8 +22,8 @@ new Vue({
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
+         .then(response => response.json())
+         .then(data => {
                 this.options = data.columns.map(column => ({ value: column, label: column }));
             });
         },
@@ -41,8 +41,8 @@ new Vue({
                 },
                 body: JSON.stringify(payload)
             })
-            .then(response => response.json())
-            .then(data => {
+         .then(response => response.json())
+         .then(data => {
                 this.result = data.message;
             });
         }
@@ -76,8 +76,11 @@ new Vue({
                 </el-row>
             </el-header>
             <el-main>
-                <div class="content">
-                    <el-input type="textarea" v-model="result" :autosize="{ minRows: 2, maxRows: 4}"></el-input>
+                <div style="margin-top: 200px;">
+                    <el-input type="textarea" v-model="result" :autosize="{ minRows: 4, maxRows: 8}"></el-input>
+                </div>
+                <div style="text-align: center; margin-top: -60px;">
+                    <el-button type="primary" @click="analyze">确认</el-button>
                 </div>
             </el-main>
         </el-container>
